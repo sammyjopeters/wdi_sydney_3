@@ -15,5 +15,9 @@ students = ['Adam Richards',
 'Samantha Peters']
 
 students.each do |student|
-  FileUtils.mkdir student.gsub(' ','_').downcase
+  folder_name = student.gsub(' ','_').downcase
+  FileUtils.mkdir folder_name
+  FileUtils.chdir folder_name
+  FileUtils.touch '.gitkeep'
+  FileUtils.chdir '../'
 end
