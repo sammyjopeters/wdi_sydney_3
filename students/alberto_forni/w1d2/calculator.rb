@@ -2,15 +2,25 @@
 # A user should be able to choose from the menu
 def menu
   puts 'What operations do you wanna do?'
-  basic_calc
+  puts 'press 1 for basic operations'
+  puts 'press 2 for advanced operations'
+
+  input = gets.chomp.to_i
+
+  case input
+  when 1
+    basic_calc
+  when 2
+    advanced_calc
+  end
 end
 
 
 # A user should be able to enter numbers to perform the operation on
 # A user should be shown the result
 def basic_calc
-  print "(a)dd, (s)ubtract, (m)ultiply, (d)ivide, (adv)vanced, (q)uit: "
-  input = gets.chomp
+  print "(a)dd, (s)ubtract, (m)ultiply, (d)ivide: "
+  input = gets.chomp.downcase
 
   result = 0
   
@@ -35,8 +45,6 @@ def basic_calc
   	puts numbers[0] / numbers[1]
   when "q"
   	result = "q"
-  when "adv"
-  	result = advanced_calc
   else
   	puts "I'dont know this operation"
   end
@@ -45,8 +53,7 @@ def basic_calc
 
 end
 
-def ask_number()
-	counter = 1
+def ask_number(position = "")
 	print "Give me the #{position} number: "
 	gets.chomp.to_f
 end
@@ -58,8 +65,8 @@ def ask2_numbers
 end
 
 def advanced_calc
-  print "(p)ower, (s)qrt, (b)ack, (q)uit: "
-  input = gets.chomp
+  print "(p)ower, (s)qrt: "
+  input = gets.chomp.downcase
 
   result = 0
   case input
@@ -69,8 +76,6 @@ def advanced_calc
   when "s"
   	number = ask_number()
   	puts Math.sqrt(number)
-  when "b"
-  	basic_calc
   when "q"
   	result = "q"
   else
