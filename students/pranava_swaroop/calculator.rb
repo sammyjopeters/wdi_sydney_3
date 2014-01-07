@@ -13,13 +13,14 @@ def basic_calc
 end
 
 def advanced_calc
-  print "(p)ower, (sq)rt (q)uit: "
+  print "(p)ower, (sq)rt, (q)uit: "
 
 end
 
 def add(a,b)
 	(a+b)
 end
+
 
 def sub(a,b)
 	a-b
@@ -45,33 +46,32 @@ end
 def validate(resp)
 
 	if(resp != 'sq')
-		puts "Enter the first number: "
+		print "\tEnter the first number: "
 		a = gets.chomp.to_i
-		puts "Enter the second number: "
+		print "\tEnter the second number: "
 		b = gets.chomp.to_i
 		case resp
 		when 'a'
-			puts add(a,b)
+			puts  "\t output: #{add(a,b)}"
 		when 's'
-			puts sub(a,b)
+			puts  "\t output: #{sub(a,b)}"
 		when 'm'
-			puts mul(a,b)
-
+			puts  "\t output: #{mul(a,b)}"
 		when 'd'
-			puts div(a,b)
+			puts  "\t output: #{div(a,b)}"
 		when 'p'
-			puts pow(a,b)
+			puts  "\t output: #{pow(a,b)}"
 		else
-			puts 'Please enter a valid option'
+			puts 'Please enter a valid option to calculate'
 		end
 	else
 		case resp
 		when 'sq'
-			puts "Enter the a number: "
+			print "\tEnter the a number: "
 			a = gets.chomp.to_i
-			puts sqrt(a)
+			puts "\t output: #{sqrt(a)}"
 		else
-			puts 'Please enter a valid option'
+			puts 'Please enter a valid option to calculate'
 		end
 	end
 	
