@@ -4,7 +4,7 @@
 def basic_calc
   print "Enter starting number: "
   num_start = gets.chomp.to_i
-  print "(a)dd (+), (s)ubtract (-), (m)ultiply or (d)ivide #{num_start} by?"
+  print "(a)dd, (s)ubtract, (m)ultiply or (d)ivide #{num_start} by?"
   basic = gets.chomp
   case basic
   	# capture the number to add
