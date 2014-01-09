@@ -9,26 +9,6 @@ S = {"grand" => 4, "33rd" => 3, "28th" => 2, "23rd" => 1, "union" => 0, "aston" 
 
 
 
-## Talk to the user, fool!!
-puts " "
-puts "What line is your first station at? (N) Line, (L) Line, (S)ix Line..."
-lineStart = gets.chomp.upcase!
-
-puts " "
-puts "And what station is it?(enter the name)"
-# Not working: List each station based on the startLine chosen
-#lineStart.each_key {|key| puts "Choose from: #{key}"}
-stationStart = gets.chomp
-
-puts " "
-puts "On what line is your destination? (N) Line, (L) Line, (S)ix Line..."
-lineFinish = gets.chomp.upcase!
-
-puts " "
-puts "And what stop are you hopping off at? enter the name"
-stationFinish = gets.chomp
-
-
 
 def specialMessage(stops)
 		if stops == 1
@@ -45,11 +25,27 @@ def specialMessage(stops)
 end
 
 
+#error if user enters the wrong line
+class LineError < NoMethodError
+
+end
+
+#error if user enters the wrong station
+class StationError < NoMethodError
+
+end
+
+
+
+
+
 def how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
 
 # the hashes I declare above use single character names (which ruby doesn't like to swap with variables)
 # by using .clone, the variables lineStart or lineFinish will now become a copy of the relevant hash itself. 
 # THis makes the hash data available whereever I declare Linestart or linefinish. AMAZEBALLS
+
+
 
 	case lineStart
 		when "N"
@@ -59,7 +55,7 @@ def how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
 		when "S"
 			linestart = S.clone
 		else
-			puts "You didn't enter the right starting line. Try again!"
+			puts "Whoops! I don't know what line you mean."
 	end
 
 	case lineFinish
@@ -70,7 +66,7 @@ def how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
 		when "S"
 			lineFinish = S.clone
 		else
-			puts "You didn't enter the right starting line. Try again!"
+			puts "Whoops! I don't know what line you mean."
 	end
 
 
@@ -78,12 +74,14 @@ def how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
 	if lineStart == lineFinish
 			#if so, use a particular formula to ensure we get a positive number
 			result = (lineStart[stationStart] - lineFinish[stationFinish]).abs
+			puts "DEBUG: Linestart value = (#{lineStart[stationStart]}) minus line finish value (#{lineFinish[stationFinish]}) = #{result}"
 			#puts "You've got #{result} stops before you have to get off"
 			specialMessage(result)
 
 		else
 			#otherwise, we use the opposite formula to allow us to count AHEAD or BACKWARDS from the intersection.
 			result = lineStart[stationStart].abs + lineFinish[stationFinish].abs
+			puts "DEBUG: Linestart value = (#{lineStart[stationStart]}) plus line finish value (#{lineFinish[stationFinish]}) = #{result}"
 			#puts "You've got #{result} stops before you have to get off"
 			specialMessage(result)
 
@@ -94,14 +92,44 @@ end
 
 
 
-	# validity checker that doesn't work
-	# def valid?(user, options)
-	# 	 options.each {|value| value != user}
-	# 		puts "I don't understand what you wrote. Try again!"
-	# 	end
-	# end
+##EXECUTE CODE HERE
+
+continue_trains = true
+while continue_trains == true
+
+## Talk to the user, fool!!
+
+	puts " "
+	puts "What line is your first station at? (N) Line, (L) Line, (S)ix Line..."
+	lineStart = gets.chomp.upcase!
+	# if lineStart != ["N", "L", "S"]
+	# 	raise LineError, "You didn't enter N, L or S. Try again!"
 
 
+
+	puts " "
+	puts "And what station is it?(enter the name)"
+	stationStart = gets.chomp
+	# rescue
+	# 	puts "I couldn't figure out your trip. Did you enter the right station?"
+
+
+	#get the sestination info.
+
+	puts " "
+	puts "On what line is your destination? (N) Line, (L) Line, (S)ix Line..."
+	lineFinish = gets.chomp.upcase!
+	# if lineFinish != ["N", "L", "S"]
+	# 	raise LineError, "You didn't enter N, L or S. Try again!"
+
+
+
+
+	puts " "
+	puts "And what stop are you hopping off at? enter the name"
+	stationFinish = gets.chomp
+	# rescue
+	# puts "I couldn't figure out your trip. Did you enter the right station?"
 
 
 
@@ -116,14 +144,17 @@ how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
 
 
 	if continue == "Y"
-		how_many_stops(lineStart, stationStart, lineFinish, stationFinish)
+		continue_trains = true
 
 	elsif continue == "N"
+		# contnue_trains = false
 		exit
 	else
 		"You entered something I didn't get. Try again!"
 
 	end
+
+end
 
 
 
