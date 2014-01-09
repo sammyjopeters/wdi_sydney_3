@@ -6,12 +6,13 @@ $stations = {
 }
 $conjunction = { "Union Square" => ["n", "l", "6"] }
 
-
+# puts a greeting
 def greetings
 	puts "Welcome to train app"
   puts "----------\n"
 end
 
+# put metro lines and get/evaluate user input
 def get_lines(text)
   begin
     line = prompt("#{text}\n #{$lines.to_s}")
@@ -27,6 +28,7 @@ def get_lines(text)
   line
 end
 
+# put metro stations and get/evaluate user input
 def get_station(line, text)
   begin
     station = prompt("#{text}\n #{$stations[line].to_s}")
@@ -41,25 +43,31 @@ def get_station(line, text)
   station
 end
 
+# get an array of the stations between 2 indexes
 def get_stations_in_between(start_index, end_index, stations)
   arr = []
+  method_name = nil
   if start_index < end_index
-    start_index.upto(end_index) { |station_index| arr << stations[station_index] }
+    method_name = :upto
   elsif start_index > end_index
-    start_index.downto(end_index) { |station_index| arr << stations[station_index] }
+    method_name = :downto
   end
 
+  start_index.send(method_name,end_index) { |station_index| arr << stations[station_index] }
+  
   #remove the station from which you're getting in
   arr.shift
   arr
 end
 
+# get metro lines and return conjunctions
 def stations_conjunctions(*lines)  
   $conjunction.each do |station, line_changes|
     return station if lines.all? { |line| line.include? station }
   end
 end
 
+# calucluate the travel from a station to an other station
 def calculate_travel(start_line, start_station, end_line, end_station)
 
   if start_line == end_line
@@ -109,11 +117,13 @@ def calculate_travel(start_line, start_station, end_line, end_station)
   end
 end
 
+# prompt
 def prompt(question)
   print "#{question} > "
   gets.chomp
 end
 
+# main method
 def main
   greetings
 
@@ -127,6 +137,7 @@ def main
 
   puts "\n----------"
   puts "Travel details: "
+  puts "#{travel.size - 1} stops"
   puts travel.join(" => ")
   puts "----------"
 end
