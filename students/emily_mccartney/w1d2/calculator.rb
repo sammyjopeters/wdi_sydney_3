@@ -50,7 +50,7 @@ def basic_calc
 
   print "The answer equals: #{answer}"
 
-end
+end 
 def advanced_calc
  print "(p)ower, (s)qrt: "
   function_2 = gets.chomp.downcase
