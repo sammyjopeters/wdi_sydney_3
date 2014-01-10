@@ -22,6 +22,7 @@ class Person
 			if food.include?(allergies)
 			#	raise AllergyError, "You can't eat that! You'll have to throw it up!"
 			raise AllergyError, "You can't eat that! You'll have to throw it up!"
+		
 			else
 				stomach.concat(food)
 				puts "Nom, Nom, Nom"
