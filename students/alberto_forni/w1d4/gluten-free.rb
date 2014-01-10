@@ -2,7 +2,7 @@
 # Create a method that allows the person to eat and add arrays of food to their stomachs
 # If a food array contains a known allergy reject the food.
 
-class AllergyError < RuntimeError
+class AllergyError < StandardError
 end
 
 class Person
