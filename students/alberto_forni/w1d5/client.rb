@@ -1,12 +1,20 @@
 class Client
-	def initialize(name, children_num, age, pets_num)
-		@name = name
-		@children_num = children_num
-		@age = age
-		@pets_num = pets_num
+  attr_reader :name, :children_num, :age, :pets_num
+
+	def initialize()
+		create()
 	end
 
+  def create()
+    Console.s
+    @name = Console.prompt 'What\'s the client name?'
+    @age = Console.prompt "How old is #{name}?"
+    @children_num = Console.prompt "How many childern has #{name}?"
+    @pets_num = Console.prompt "How many pets has #{name}?"
+    Console.sn
+  end
+
   def to_s
-    puts "#{name}, is #{age}, she has #{children_num} children and #{pets_num} animals"
+    "#{name}, is #{age}, has #{children_num} children and #{pets_num} animals"
   end
 end
