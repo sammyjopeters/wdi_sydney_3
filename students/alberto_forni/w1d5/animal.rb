@@ -6,4 +6,8 @@ class Animal
     @species = species
     @toys = toys
 	end
+
+	def to_s
+    puts "#{name} is a #{age} years old #{gender} #{species} that loves #{@toys}"
+  end
 end

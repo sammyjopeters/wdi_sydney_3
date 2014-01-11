@@ -5,4 +5,8 @@ class Client
 		@age = age
 		@pets_num = pets_num
 	end
+
+  def to_s
+    puts "#{name}, is #{age}, she has #{children_num} children and #{pets_num} animals"
+  end
 end
