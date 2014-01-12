@@ -6,29 +6,7 @@ require_relative 'client_class.rb'
 
 
 
-# create a method that will assign pets to clients. clients should be able to have multple pets.
-def adopt_animal(animal, animals, clients)
-  puts "What is your name?"
-  name = gets.chomp.capitalize
-  client_name = name.downcase.strip
-  existing_client = clients.find { |client| client.name.downcase.strip == client_name }
-    if existing_client == nil
-		client_name = Client.new(name)
-		clients << client_name
-		animals.delete(animal)
-		client_name.pets << animal
-	else
-	  # add animal to their pets array
-      animals.delete(animal)
-      existing_client.pets << animal
-	end
 
-  puts
-  puts "Thank you #{name} for giving #{animal.name} a home :)"
-  puts
-  main_menu(animals, clients)
-
-end
 
 # menu for the shelter
 def main_menu(animals, clients)
@@ -55,6 +33,7 @@ end
 
 # view animals that are up for adoption
 def view_animals(animals, clients)
+	# iterates through the array of animals and prints the animal's details
 	for animal in animals do
 		puts animal.to_s
 	end
@@ -69,6 +48,7 @@ end
 # view clients who have adopted animals
 def view_clients(animals, clients)
 	puts "Clients:"
+	# iterates through the array of clients and prints all the pets each client has adopted.
 	for client in clients do
 		puts client.name + " has adopted these animals: "
 		for pet in client.pets do
@@ -83,12 +63,15 @@ end
 
 # existing and new clients can put animals up for adoption
 def put_up_animal(animals, clients)
+	# capture all the details of the animal
 	puts "What type of animal is it?"
 	species = gets.chomp.capitalize
 	puts "What breed of " + species + " is it?"
 	breed = gets.chomp.capitalize
 	puts "What is the sex of the " + species + "?"
 	gender = gets.chomp.downcase
+
+	# put a conditional so that the responses are using the right gender
 	if gender.include?("f")
 	  puts "What is her name?"
 	else
@@ -110,6 +93,33 @@ def put_up_animal(animals, clients)
 	
 	main_menu(animals, clients)
   
+end
+
+# create a method that will assign pets to clients. clients should be able to have multple pets.
+def adopt_animal(animal, animals, clients)
+  puts "What is your name?"
+  name = gets.chomp.capitalize
+  client_name = name.downcase.strip
+  # check to see if client name already exists, if it does add to their pets array
+  existing_client = clients.find { |client| client.name.downcase.strip == client_name }
+
+    # when there is no name it will create a new client
+    if existing_client == nil
+		client_name = Client.new(name)
+		clients << client_name
+		animals.delete(animal)
+		client_name.pets << animal
+	else
+	  # add animal to their pets array
+      animals.delete(animal)
+      existing_client.pets << animal
+	end
+
+  puts
+  puts "Thank you #{name} for giving #{animal.name} a home :)"
+  puts
+  main_menu(animals, clients)
+
 end
 
 
