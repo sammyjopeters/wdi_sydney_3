@@ -1,15 +1,18 @@
 require './console'
 
 class Animal
-  attr_reader :name, :age, :gender, :species, :toys
+  attr_accessor :name, :age, :gender, :species, :toys
 
-	def initialize()
+	def initialize(name = nil, age = nil, gender = nil, species = nil)
+    @name = name
+    @age = age
+    @gender = gender
+    @species = species
     @toys = []
-    create()
+    create() unless name
 	end
 
   def create()
-    Console.s
     @name = Console.prompt 'What\'s the animal name?'
     @age = Console.prompt "How old is #{name}?"
     @gender = Console.prompt "What's #{name}'s gender?"
@@ -24,6 +27,6 @@ class Animal
   end
 
 	def to_s
-    "#{name} is a #{age} years old #{gender} #{species} that loves #{@toys.join(",")}"
+    "#{name} is a #{age} years old #{gender} #{species} that loves #{@toys.join(", ")}"
   end
 end

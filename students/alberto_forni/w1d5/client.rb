@@ -1,12 +1,15 @@
 class Client
-  attr_reader :name, :children_num, :age, :pets_num
+  attr_accessor :name, :age, :children_num, :pets_num
 
-	def initialize()
-		create()
+	def initialize(name = nil, age = nil, children_num = 0, pets_num = 0)
+		@name = name
+    @age = age
+    @children_num = children_num
+    @pets_num = pets_num
+    create() unless name
 	end
 
   def create()
-    Console.s
     @name = Console.prompt 'What\'s the client name?'
     @age = Console.prompt "How old is #{name}?"
     @children_num = Console.prompt "How many childern has #{name}?"
