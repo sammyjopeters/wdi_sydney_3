@@ -21,4 +21,6 @@ class Animal
   def to_s
     "#{name} is a #{age} year old #{gender} #{species} that loves #{toys}"
   end
+
+
 end
