@@ -52,7 +52,7 @@ def view_clients(animals, clients)
 	for client in clients do
 		puts client.name + " has adopted these animals: "
 		for pet in client.pets do
-			puts "#{pet.name} - who is a #{pet.age} year old #{pet.breed}"
+			puts " * #{pet.name} - who is a #{pet.age} year old #{pet.breed}"
 
 		end
 		puts
@@ -85,9 +85,9 @@ def put_up_animal(animals, clients)
 	animal_to_adopt = Animal.new(name, age, gender, species, breed)
 	add_animal(animal_to_adopt, animals)
 	if gender.include?("f")
-	  puts "We'll take " + name + "and make sure she finds a great home :)"
+	  puts "We'll take " + name + " and make sure she finds a great home :)"
 	else
-		puts "We'll take " + name + "and make sure he finds a great home :)"
+		puts "We'll take " + name + " and make sure he finds a great home :)"
 	end
 	puts
 	
