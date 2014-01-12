@@ -19,10 +19,10 @@ class Animal
   # When we display the animal using puts or print, the
   #   to_s method is called to pretty print an Animal
   def to_s
-    puts "This animal's name is #{name}."
-    puts "They're #{age} years old."
-    puts "They're a #{gender} #{species}."
-    puts "Their favourite toys are #{toys}!"
+    print "Name: #{name}, "
+    print "Age: #{age}, "
+    print "#{gender}, "
+    puts "Favourite toys: #{toys}"
   end
 end
 

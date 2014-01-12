@@ -8,19 +8,20 @@ class Shelter
 
 	def to_s
 		puts "====HappyTails Shelter===="
-		puts "Current animals: #{current_animals}"
-		puts "Current clients: #{current_clients}"
+		puts "Current animals: "
+		@current_animals.each do |key, value|
+			puts value.to_s
+		end
+
+		puts "Current clients:"
+		@current_clients.each do |key, value|
+			puts value.to_s
+		end
+
 	end
 
 end
 
 
-def list_all_clients
-	puts "\n Listing all clients:"
-	puts "{current_clients.key},"
-end
 
-def list_all_animals
-	puts "\n listing all animals:"
-	puts "#{current_animals.key}"
-end
+

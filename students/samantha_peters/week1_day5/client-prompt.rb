@@ -9,10 +9,10 @@ class Client
 	end
 
 	def to_s
-		puts "This is #{name}"
-		puts "They have #{number_of_children} kids. Poor sods."
-		puts "They're #{age} years old"
-		puts "At home, they already have #{number_of_pets} animals!"
+		print "Name: #{name}, "
+		print "Children: #{number_of_children}, "
+		print "Age: #{age}, "
+		puts "Pets at home: #{number_of_pets}"
 	end
 
 end
