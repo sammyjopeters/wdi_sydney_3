@@ -5,7 +5,7 @@ class Person
 	end
 
 	attr_accessor :stomach
-	attr_accessor :allergies
+	attr_reader :allergies
 	  
 	 # When someone tries to set a last name, enforce rules about it.  
 	 def allergies=(allergies)  
