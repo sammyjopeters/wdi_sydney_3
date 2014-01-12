@@ -34,13 +34,22 @@ end
 def adopt_animal(animal, animals, clients)
   puts "What is your name?"
   name = gets.chomp.capitalize
-  client = name.downcase.strip
-  client = Client.new(name)
-  clients << client
-  animals.delete(animal)
-  client.pets << animal
+  client_name = name.downcase.strip
+  existing_client = clients.find { |client| client.name.downcase.strip == client_name }
+    if existing_client == nil
+		client_name = Client.new(name)
+		clients << client_name
+		animals.delete(animal)
+		client_name.pets << animal
+	else
+	  # add animal to their pets array
+      animals.delete(animal)
+      existing_client.pets << animal
+	end
+
+
   puts
-  puts "Thank you for giving #{animal.name} a home :)"
+  puts "Thank you #{name} for giving #{animal.name} a home :)"
   puts
   main_menu(animals, clients)
 end
