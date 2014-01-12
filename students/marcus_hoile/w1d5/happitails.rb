@@ -1,34 +1,10 @@
 # animal shelter manager. Manage a list of animals and clients and facilitate adoptions
 
 # create classes for animals and clients
-class Animal
-	attr_accessor :name, :age, :gender, :species, :breed
-	def initialize(name, age, gender, species, breed)
-		@name = name
-		@age = age
-		@gender = gender
-		@species = species
-		@breed = breed
-	end
+require_relative 'animal_class.rb'
+require_relative 'client_class.rb'
 
-	def to_s
-		"#{name} - a #{age} year old #{breed} #{species}"
-	end
 
-end
-
-class Client
-	attr_accessor :name, :pets
-	def initialize(name)
-		@name = name
-		@pets = []
-	end
-
-	def to_s
-		"#{name}"
-	end
-
-end
 
 # create a method that will assign pets to clients. clients should be able to have multple pets.
 def adopt_animal(animal, animals, clients)
@@ -47,11 +23,11 @@ def adopt_animal(animal, animals, clients)
       existing_client.pets << animal
 	end
 
-
   puts
   puts "Thank you #{name} for giving #{animal.name} a home :)"
   puts
   main_menu(animals, clients)
+
 end
 
 # menu for the shelter
@@ -67,14 +43,17 @@ def main_menu(animals, clients)
 	end
 end
 
+# add an animal available for adoption
 def add_animal(animal, animals)
   animals << animal
 end
 
+# add a new client to the the client list
 def add_client(client, clients)
 	clients << client
 end
 
+# view animals that are up for adoption
 def view_animals(animals, clients)
 	for animal in animals do
 		puts animal.to_s
@@ -87,6 +66,7 @@ def view_animals(animals, clients)
 	adopt_animal(animal_to_adopt, animals, clients)
 end
 
+# view clients who have adopted animals
 def view_clients(animals, clients)
 	puts "Clients:"
 	for client in clients do
@@ -101,6 +81,7 @@ def view_clients(animals, clients)
 	main_menu(animals, clients)
 end
 
+# existing and new clients can put animals up for adoption
 def put_up_animal(animals, clients)
 	puts "What type of animal is it?"
 	species = gets.chomp.capitalize
