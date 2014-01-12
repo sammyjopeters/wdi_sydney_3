@@ -18,7 +18,7 @@ end
 # Create a Person named Chris. Chris is allergic to gluten.
 class Chris < Person
 	def initialize(allergy="gluten")
-		@name = "chris"
+		#@name = "chris"
 		super
 	end
 
@@ -27,7 +27,7 @@ end
 # Create a Person named Beth. Beth is allergic to scallops.
 class Beth < Person
 	def initialize(allergy="scallops")
-		@name = "beth"
+		#@name = "beth"
 		super
 	end
 
