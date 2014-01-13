@@ -20,17 +20,19 @@ end
 p array
 
 # p array
-# product_arr = []
+product_arr = []
 # x = [100..999]
-# [100..999].each { |i| i * x }
-# product_arr 
-for i in 100..999
-	(for x in 100..999
-		product = i * x
+# [100..999].each { |i| product_arr.pus(i * (100..999)) }
+
+product1 = [100..999]
+product2 = [100..999]
+for i in product1
+		product_arr = product2.map { |i| i
 		product_arr.push(product)
 	end
 	product_arr
 end
+# p array & product_arr
 
 a = [1, 3, 4, 5]
 b = [4, 2, 1, 7 ,8 ,9 ]

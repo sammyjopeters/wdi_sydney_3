@@ -182,14 +182,6 @@ end
 
 
 
-# p "i like this type of #{petersham.type} for $#{petersham_list.rent}"
-# agent = Agent.new
-
-# $website_listing
-# agent.remove_listing()
-# p $website_listing
-# p "The house at " + petersham.to_s + " is for rent at a cost of" + petersham_list.to_s
-
 # create all our buildings
 petersham = Building.new("house", "234 Enmore rd", "Petersham", 4, 1)
 redfern = Building.new("house", "740 Bourke st", "Redfern", 4, 2)
@@ -217,12 +209,12 @@ broadway_rental = Listing.new(broadway, broadway_desc, "1230")
 
 
 
-# add listings to the website array
+
 vacant_rentals = []
 tenants = []
 applicants = []
 
-
+# add listings to the vacancy list
 add_listing(vacant_rentals, petersham_rental)
 add_listing(vacant_rentals, redfern_rental)
 add_listing(vacant_rentals, glebe_rental)
@@ -234,21 +226,9 @@ marcus = Agent.new("marcus", "cheese")
 ben_svalbe = add_applicant("ben", "svalbe", 99692263, broadway_rental, applicants)
 corey = add_applicant("corey", "goding", 55555555, petersham_rental, applicants)
 
-# p "These are the current vacant rentals:"
-# 	for rental in website_listing do
-# 		 puts rental.building.suburb
-# 	end
-# p "These are the occupied rentals: "
-# 	for rental in occupied_rentals do
-# 		 puts rental.building.suburb
-# 	end
-# puts
-
-
-# website(vacant_rentals, tenants, applicants)
 
 # this is the starts the user prompts and mimmicks the website interface
-# def website(vacant, tenants, applicants)
+
 loop do
 	puts "Would you like to do? \n(1) View Rentals\n(2) Log in as Admin\n(3) Exit"
 	answer = gets.chomp.to_i

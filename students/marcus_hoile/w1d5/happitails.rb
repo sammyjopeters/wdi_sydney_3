@@ -1,25 +1,15 @@
 # animal shelter manager. Manage a list of animals and clients and facilitate adoptions
-
+# add methods to relevant classes eg 
 # create classes for animals and clients
-require_relative 'animal_class.rb'
-require_relative 'client_class.rb'
+require_relative 'animal_class'
+require_relative 'client_class'
+require_relative 'shelter_class'
 
 
 
 
 
-# menu for the shelter
-def main_menu(animals, clients)
-	puts "Would you like to do? \n(1) Adopt an Animal\n(2) Put Animal up for adoption\n(3) View Clients"
-	answer = gets.chomp.to_i
-	if answer == 1
-		view_animals(animals, clients)
-	elsif answer == 2
-		put_up_animal(animals, clients)
-	elsif answer == 3
-		view_clients(animals, clients)
-	end
-end
+
 
 # add an animal available for adoption
 def add_animal(animal, animals)
@@ -31,18 +21,19 @@ def add_client(client, clients)
 	clients << client
 end
 
-# view animals that are up for adoption
-def view_animals(animals, clients)
-	# iterates through the array of animals and prints the animal's details
-	for animal in animals do
-		puts animal.to_s
-	end
+# view animals that are up for adoption and select one for adoption
+def view_animals(clients, shelter)
+	# iterates through the array of pets at the shelfter and prints the animal's details
+	p shelter.pets.each { |pet| puts pet.to_s } # why does the shelter's pets array get displayed?
+	
 	puts
 	puts "Enter the name of the animal you would like to adopt:"
 	animal_selected = gets.chomp.capitalize
 	# find the animal in the animals array, delete and add as a pet to the client
-	animal_to_adopt = animals.find { |animal| animal_selected == animal.name }
-	adopt_animal(animal_to_adopt, animals, clients)
+	animal_to_adopt = shelter.pets.find { |pet| animal_selected == pet.name }
+	puts "What is your name?"
+	client_name = gets.chomp
+	adopt_animal(animal_to_adopt, shelter.pets, clients)
 end
 
 # view clients who have adopted animals
@@ -58,11 +49,11 @@ def view_clients(animals, clients)
 		puts
 	end
 	puts
-	main_menu(animals, clients)
+
 end
 
 # existing and new clients can put animals up for adoption
-def put_up_animal(animals, clients)
+def register_animal(animals, clients, shelter)
 	# capture all the details of the animal
 	puts "What type of animal is it?"
 	species = gets.chomp.capitalize
@@ -81,9 +72,10 @@ def put_up_animal(animals, clients)
 	puts "How old is " + name + "?"
 	age = gets.chomp.to_i
 	animal_to_adopt = name.downcase.strip
-	# create animal and add to shelter
+	# create animal and make shelter the owner
 	animal_to_adopt = Animal.new(name, age, gender, species, breed)
-	add_animal(animal_to_adopt, animals)
+	# adds the animal to shelter's 
+	shelter.put_up_for_adoption(animal_to_adopt)
 	if gender.include?("f")
 	  puts "We'll take " + name + " and make sure she finds a great home :)"
 	else
@@ -91,7 +83,7 @@ def put_up_animal(animals, clients)
 	end
 	puts
 	
-	main_menu(animals, clients)
+
   
 end
 
@@ -108,7 +100,9 @@ def adopt_animal(animal, animals, clients)
 		client_name = Client.new(name)
 		clients << client_name
 		animals.delete(animal)
+		# as well as adding animal to client, add client(owner) to animal
 		client_name.pets << animal
+		animal.owner = client_name
 	else
 	  # add animal to their pets array
       animals.delete(animal)
@@ -118,10 +112,10 @@ def adopt_animal(animal, animals, clients)
   puts
   puts "Thank you #{name} for giving #{animal.name} a home :)"
   puts
-  main_menu(animals, clients)
-
 end
 
+# create happitails
+happitails = Shelter.new("HappiTails")
 
 # create arrays to contain animals and clients
 clients = []
@@ -133,6 +127,13 @@ milo = Animal.new("Milo", 5, "Female", "Dog", "Schnauser")
 bruce = Animal.new("Bruce", 4, "Male", "Cat", "Persian")
 charlotte = Animal.new("Charlotte", 2, "Female", "Cat", "Moggy")
 mlady = Animal.new("M'Lady", 5, "Female", "Dog", "Douche")
+
+# assign the shelter as the owner
+happitails.put_up_for_adoption(harry)
+happitails.put_up_for_adoption(milo)
+happitails.put_up_for_adoption(bruce)
+happitails.put_up_for_adoption(charlotte)
+happitails.put_up_for_adoption(mlady)
 
 # create some clients
 alison = Client.new("Alison Macartney")
@@ -152,15 +153,24 @@ add_animal(bruce, animals)
 add_client(alison, clients)
 add_client(ash, clients)
 
-main_menu(animals, clients)
-
-
-
-
+# change this to a loop menu
+loop do
+	puts "Would you like to do? \n(1) Adopt an Animal\n(2) Put Animal up for adoption\n(3) View Clients\n(4) Quit"
+	answer = gets.chomp.to_i
+	if answer == 1
+		view_animals(clients, happitails)
+	elsif answer == 2
+		register_animal(animals, clients, happitails)
+	elsif answer == 3
+		view_clients(animals, clients)
+	elsif answer == 4
+		p happitails
+	end
+	break if answer == 5
+end
 
 # method for putting up for adoption
 # shelter lists all clients
 # shelter lists all animals
 # method for adopting a pet
 
-# create cms for animal shelter which includes a menu of "display animals", "display clients", "add a client", "add an animal", "adopt an animal"
