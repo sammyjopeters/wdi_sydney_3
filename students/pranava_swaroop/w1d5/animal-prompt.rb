@@ -17,7 +17,7 @@ class Animal
   end
 
 
-  def toys=(toy)
+  def add_toy(toy)
     @toys << toy
   end
 
@@ -31,4 +31,25 @@ class Animal
       "Tiny is a 3 year old male cat that loves mice, string"
       "#{name} is a #{age} year old #{gender} #{species} that loves #{toys.join(', ')}"
   end
+
+  def self.create_animal
+    print "Enter animal name: "
+    name = gets.chomp.downcase
+    print "Enter animal age: "
+    age = gets.chomp.downcase
+    print "Enter animal gender: "
+    gender = gets.chomp.downcase
+    print "Enter animal species: "
+    species = gets.chomp.downcase
+    print "Does it have a toy: "
+    yorn = gets.chomp.downcase
+    if yorn == 'y'
+      print "Enter a toy name"
+      toy = gets.chomp.downcase
+      add_toy(toy)
+    end
+
+    animal = Animal.new(name,age,gender,species)
+  end
+
 end
