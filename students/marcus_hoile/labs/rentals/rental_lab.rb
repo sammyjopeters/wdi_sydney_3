@@ -45,8 +45,8 @@ end
 
 def agent_view_rentals(vacant, tenants, applicants)
 	for rental in vacant do
-	puts "$" + rental.rent + " " + rental.building.to_s
-	puts
+		puts "$" + rental.rent + " " + rental.building.to_s
+		puts
 	end
 	agent_menu(vacant, tenants, applicants)
 end
@@ -90,17 +90,16 @@ end
 
 def approve_applicants(vacant, tenants, applicants)
   for person in applicants do
-	puts "#{person.name} #{person.contact} #{person.rental}"
-	puts "Approve application?"
-	approve = gets.chomp.downcase
-	puts
+		puts "#{person.name} #{person.contact} #{person.rental}"
+		puts "Approve application?"
+		approve = gets.chomp.downcase
+		puts
 		if approve.include?("y")
 			vacant.delete(person.rental)
 			tenants << person
-			puts "#{person.name} is now a tenant of #{person.rental.building.suburb}."
-			puts
+			puts "#{person.name} is now a tenant of #{person.rental.building.suburb}.\n"
 		end
-	end
+  end
 
   agent_menu(vacant, tenants, applicants)
 end
@@ -172,17 +171,9 @@ end
 
 
 def submit_application(tenant, rental, vacant, applicants)
-	# approve_application = ["y", "n"].sample
-	# if approve_application == "y"
-		vacant.delete(rental)
-		add_applicant(tenant[0], tenant[1], tenant[2], rental, applicants)
-
-		puts "Thanks #{tenant[0]}! We'll review your application for #{rental.building.to_s} and contact you as soon as possible."
-	# else
-	# 	puts "I'm sorry, your application was unsuccessful. You are not cool enough to live in #{rental.building.suburb}!"
-	# 	puts "Take a look at some of our other rentals."
-	# 	view_rentals(vacant, occupied)
-	# end
+	vacant.delete(rental)
+	add_applicant(tenant[0], tenant[1], tenant[2], rental, applicants)
+	puts "Thanks #{tenant[0]}! We'll review your application for #{rental.building.to_s} and contact you as soon as possible."
 
 end
 
@@ -258,22 +249,22 @@ corey = add_applicant("corey", "goding", 55555555, petersham_rental, applicants)
 
 # this is the starts the user prompts and mimmicks the website interface
 # def website(vacant, tenants, applicants)
-	puts "Would you like to do? \n(1) View Rentals\n(2) Log in as Admin?"
+loop do
+	puts "Would you like to do? \n(1) View Rentals\n(2) Log in as Admin\n(3) Exit"
 	answer = gets.chomp.to_i
 	if answer == 1
 		view_rentals(vacant_rentals, applicants)
+	elsif answer == 2
+		# password = " "
+		# while password != marcus.password
+		# 	puts "What is your password?"
+		# 	password = gets.chomp.downcase
+		# end
+		agent_menu(vacant, tenants, applicants)
 	else
-		password = " "
-		while password != marcus.password
-			puts "What is your password?"
-			password = gets.chomp.downcase
-		end
-		# go to agent menu
-		agent_menu(vacant_rentals, tenants, applicants)
-
 	end
-# end
-
+	break if answer != 1 || 2
+end 
 
 
 
