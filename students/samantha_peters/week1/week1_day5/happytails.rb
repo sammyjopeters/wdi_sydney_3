@@ -105,9 +105,7 @@ end
 
 def list_all_clients
 	puts "\n Listing all clients:"
-		@client_list.each do |key, value|
-		puts "\n#{key.to_s}"
-		end
+		@client_list.map {|key,client| client.to_s}
 end
 
 
@@ -116,9 +114,7 @@ end
 
 def list_all_animals
 	puts "\n Listing all animals:"
-		@animal_list.each do |key, value|
-		puts "\n#{key.to_s}"
-		end
+		@animal_list.map {|key,pet| pet.to_s}
 end
 
 
@@ -274,5 +270,13 @@ while main_menu_again == true
 end
 
 
+### TESTS
+
+# def adopt (animal)
+# animals = animals.delete(animal_name.to_sym)
+
+# client = clients[client_name.to_sym]
+
+# client.pets << animal
 
 
