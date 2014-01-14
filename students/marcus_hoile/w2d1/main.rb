@@ -160,10 +160,14 @@ get '/journey_form' do
 		station_start = params[:station_start]
 		line_end = params[:line_end]
 		station_end = params[:station_end]
+
+		# lookup the station and line names
 		line_start_lookup = line_lookup(line_start)
 		station_start_lookup = station_lookup(station_start)
 		line_end_lookup = line_lookup(line_end)
 		station_end_lookup = station_lookup(station_end)
+
+		# use the result and pass through the methods
 		@num_of_stops = total_stops(line_start_lookup, station_start_lookup, line_end_lookup, station_end_lookup)
 		stops_in_journey = stops_lookup(station_start_lookup, line_start_lookup, station_end_lookup, line_end_lookup)
 		@print_stops_in_journey = stops_in_journey.join(" => ")
