@@ -1,0 +1,76 @@
+*, body, html {
+	padding: 0px;
+	margin: 0px;
+}
+
+#main {
+	margin: 0px auto;
+	border: solid black 1px;
+	width: 600px;
+
+}
+
+header {
+	margin: 0px;
+	padding: 20px 0 5px 5px;
+	background: #e6e6e6;
+}
+
+section {
+	font-size: 90%;
+}
+
+footer {
+	background: yellow;
+	padding: 5px;
+}
+
+nav {
+	background: #363636;
+	padding: 5px;
+	
+}
+nav a {
+	display: block;
+	text-decoration: none;
+	color: blue;
+	background: #999;
+	margin:0px;
+	padding: 5px 10px;
+	float:left;
+}
+
+.clearfix:after {
+	 content: "."; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+#content {
+	background: aqua;
+	padding:10px 5px 20px 5px;
+	min-height: 150px;
+
+}
+
+.ad_box {
+	float:left;
+	width: 190px;
+	padding: 10px 5px;
+	min-height: 80px;
+
+}
+
+#toys {
+	background: lime;
+}
+
+#grooming {
+	background: red;
+}
+
+#food {
+ 	background: orange;
+}
