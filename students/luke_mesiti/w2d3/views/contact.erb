@@ -1,0 +1,31 @@
+
+
+
+<section>
+  <h1><a name="contact">Contact us</a></h1>
+
+  <form action="#" method="get">
+   <label>What is your name?</label>
+   <input type="text" />
+   <br/>
+   <label>What is your email?</label>
+   <input type="email" />
+   <br/>
+
+   <label>Select your student</label>
+   <select name="student">
+       <option>Alberto</option>
+       <option>Pranava</option>
+       <option>Luke</option>
+       <option>Emily</option>
+   </select>
+   <br/>
+   <textarea name="message"></textarea>
+   <br/>
+   <input type="submit" value="Send email" />
+
+  </form>
+  <% if params.size > 0 %>
+   <p>thanks your message has been sent to <%= params[:student] %></p>
+  <% end %>
+ </section>
