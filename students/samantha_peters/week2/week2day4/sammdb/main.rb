@@ -4,13 +4,6 @@ require 'HTTParty'
 require 'active_support/all'
 require 'json'
 
-def one_page_result(movietitle)
-      get '/id/#{movietitle.to_s}' do
-        @movie = params[:movietitle].downcase
-        @movie.to_s.gsub!(/[[:space:]]/, "+") 
-        @searchlist = JSON(HTTParty.get("http://www.omdbapi.com/?t=" + "#{movietitle.to_s}")) 
-      end
-end
 
 
 
@@ -55,14 +48,19 @@ get '/results' do
     @movie.to_s.gsub!(/[[:space:]]/, "+") 
     @searchlist = JSON(HTTParty.get("http://www.omdbapi.com/?s=" + "#{@movie.to_s}"))
 
-    if @searchlist["Search"].size == 1
-      one_page_result(@movie)
+
+    if @searchlist["Search"].size.to_i == 1
+      puts "Number of results for this term is #{@searchlist["Search"].size}"
+      @movieid = @searchlist["Search"][0]["imdbID"]
+      redirect to "/id/#{@movieid}"
+    else
+      erb :results
     end
-
-
+  else
+    erb :results
   end
 
-erb :results
+
 end
 
 get '/id/:movieid' do
