@@ -36,7 +36,7 @@ header {
 }
 
 #hero {
-	background: url(/images/home-bloghero.png) no-repeat;
+	background: url(../images/home-bloghero.png) no-repeat;
 	width: 960px;
 	height: 500px;
 

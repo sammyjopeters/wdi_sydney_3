@@ -24,7 +24,7 @@ end
 # view animals that are up for adoption and select one for adoption
 def view_animals(clients, shelter)
 	# iterates through the array of pets at the shelfter and prints the animal's details
-	p shelter.pets.each { |pet| puts pet.to_s } # why does the shelter's pets array get displayed?
+	shelter.pets.each { |pet| puts pet.to_s } # why does the shelter's pets array get displayed?
 	
 	puts
 	puts "Enter the name of the animal you would like to adopt:"
@@ -40,7 +40,7 @@ end
 def view_clients(animals, clients)
 	puts "Clients:"
 	# iterates through the array of clients and prints all the pets each client has adopted.
-	for client in clients do
+	clients.each do |client|
 		puts client.name + " has adopted these animals: "
 		for pet in client.pets do
 			puts " * #{pet.name} - who is a #{pet.age} year old #{pet.breed}"
@@ -77,11 +77,11 @@ def register_animal(animals, clients, shelter)
 	# adds the animal to shelter's 
 	shelter.put_up_for_adoption(animal_to_adopt)
 	if gender.include?("f")
-	  puts "We'll take " + name + " and make sure she finds a great home :)"
+	  puts "We'll take " + name + " and make sure she finds a great home :)\n"
 	else
-		puts "We'll take " + name + " and make sure he finds a great home :)"
+		puts "We'll take " + name + " and make sure he finds a great home :)\n"
 	end
-	puts
+	
 	
 
   
@@ -95,8 +95,8 @@ def adopt_animal(animal, animals, clients)
   # check to see if client name already exists, if it does add to their pets array
   existing_client = clients.find { |client| client.name.downcase.strip == client_name }
 
-    # when there is no name it will create a new client
-    if existing_client == nil
+  # when there is no name it will create a new client
+  if existing_client == nil
 		client_name = Client.new(name)
 		clients << client_name
 		animals.delete(animal)
@@ -154,20 +154,20 @@ add_client(alison, clients)
 add_client(ash, clients)
 
 # change this to a loop menu
-loop do
-	puts "Would you like to do? \n(1) Adopt an Animal\n(2) Put Animal up for adoption\n(3) View Clients\n(4) Quit"
+begin
+	puts "Would you like to do? \n(1) Adopt an Animal\n(2) Put Animal up for adoption\n(3) View Clients\n(4) Happitails... (5) Quit"
 	answer = gets.chomp.to_i
-	if answer == 1
+	case answer 
+	when 1
 		view_animals(clients, happitails)
-	elsif answer == 2
+	when 2
 		register_animal(animals, clients, happitails)
-	elsif answer == 3
+	when 3
 		view_clients(animals, clients)
-	elsif answer == 4
+	when 4
 		p happitails
 	end
-	break if answer == 5
-end
+end until (answer == 5)
 
 # method for putting up for adoption
 # shelter lists all clients
