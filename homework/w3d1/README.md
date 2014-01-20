@@ -1,7 +1,8 @@
 ## Build a simple blog
 ### This is a CRUD app with the resource being the "post"
-
+  
 posts have:
+
 1. title
 2. short description/abstract
 3. body text (possibly very long)
@@ -10,6 +11,7 @@ posts have:
 
 
 Your app should let you:
+
 1. display a list of posts
 2. each item on the list has a title and the short description
 3. the title should take the user to the "show" page for a post
@@ -24,6 +26,7 @@ RL
 set just in your code before you save the information to the database
 
 This seems like a huge set of things... don't try to build it all at once.
+
 1. First - spend *at least* 15min writing down a full list of things you need to do as a todo list. you will do that right now before we leave.
 2. Then decide which thing is the simplest thing you could do, and do that first.
 3. check it works! if it doesn't fix it before moving on
