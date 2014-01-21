@@ -1,0 +1,5 @@
+<h1><%= CGI.unescape(@post['title']) %></h1>
+<p>posted by <%= @post['author'] %> <%= @post['created_at'] %></p>
+<p><%= CGI.unescape(@post['body']) %></p>
+<p><form action="/post/<%= @post['id'] %>/destroy" method="post"><button>Delete</button></form></p>
+<p><a href="/post/<%= @post['id'] %>/edit"><button>Edit</button></a></p>

@@ -1,0 +1,63 @@
+/** {
+	border: dotted red 1px;
+}*/
+
+body {
+	margin:0;
+	padding: 0;
+}
+
+#container {
+	margin: 0 auto 300px auto;
+	max-width:700px;
+	/*border: solid black 1px;*/
+}
+
+.nav {
+	list-style:none;
+
+}
+header {
+	background: red;
+	height: 140px;
+
+}
+
+.nav > li {
+	display:inline-block;
+	padding: 20px;
+	float:right;
+}
+
+#sort {
+	text-align:right;
+}
+.author {
+	font-style: italic;
+}
+
+form {
+	display:block;
+	width: 700px;
+
+}
+input[type="text"] {
+	width: 700px;
+	height: 20px;
+	font-size: 14px;
+}
+textarea {
+	width:700px;
+	font-size:14px;
+
+}
+button {
+	height: 25px;
+	width: 100px;
+	margin: 0 5px;
+	float:left;
+}
+h1 {
+	margin:0;
+	padding: 20px;
+}
