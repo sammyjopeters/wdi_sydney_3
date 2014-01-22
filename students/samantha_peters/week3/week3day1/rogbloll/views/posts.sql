@@ -6,7 +6,8 @@ title VARCHAR(255),
 tagline VARCHAR(255),
 postbody TEXT,
 author VARCHAR(50),
-created TIMESTAMP
+created TIMESTAMP,
+updated TIMESTAMP,
 
 );
 
@@ -16,3 +17,18 @@ created TIMESTAMP
 
 
 -- INSERT INTO posts (title, tagline, postbody, author, created) VALUES ('The third Post', 'This post is full of bacon ipsum! Struth!', 'Bacon ipsum dolor sit amet et dolore porchetta andouille, landjaeger beef short ribs dolor ball tip jerky shoulder ribeye ea. Ea irure pancetta turkey kielbasa frankfurter pastrami rump nisi filet mignon hamburger elit. Ullamco andouille boudin chicken culpa pig ad id spare ribs prosciutto porchetta. Sint in tri-tip, velit mollit cupidatat in minim. Salami andouille sint occaecat fatback ribeye incididunt pig ullamco bacon mollit pork belly ham hock. Andouille meatloaf brisket cillum minim. Do boudin tail prosciutto. Pork chop meatball aute leberkas ribeye chicken reprehenderit velit in kevin nulla laboris. Swine jowl doner fatback. Bacon laboris ball tip, pork belly filet mignon tenderloin short ribs culpa chicken. Leberkas nisi labore, enim pork shoulder incididunt minim in. Cow eu occaecat capicola fatback beef ribs doner andouille rump venison corned beef leberkas dolore. Sed tail beef sint velit proident pig landjaeger pastrami in fugiat tempor et frankfurter est. Ribeye biltong boudin chicken hamburger.', 'Sammyjo', '2014-01-20 21:36:55.00000');
+
+
+CREATE TABLE comments
+
+(
+id SERIAL8 PRIMARY KEY,
+author VARCHAR(255),
+commentbody TEXT,
+created_at TIMESTAMP,
+post_id INTEGER
+);
+
+-- INSERT INTO comments (author, commentbody, created_at, post_id) VALUES ('Harry Potter', 'This is a great post, thanks!', '2014-01-21 20:00:55.00000', 1);
+-- INSERT INTO comments (author, commentbody, created_at, post_id) VALUES ('Rubeus Hagrid', 'I shouldnt have said that, i should NOT have said that! Post me yo...', '2014-01-15 23:00:55.00000', 2);
+-- INSERT INTO comments (author, commentbody, created_at, post_id) VALUES ('Kamakaze Watermelon', 'fhfjkhfjsk ASDF', '2014-01-19 23:00:55.00000', 2);

@@ -1,0 +1,22 @@
+<form method="post" action="/posts/<%= @blogpost['id'] %>">
+    <!-- post title -->
+    <input type="hidden" name="_method" value="put">
+    <label for="title">Post Title:</label><br />
+    <input type="text" name="title" value="<%= @blogpost['title'] %>"><br /><br />
+
+
+    <!-- post tagline -->
+    <label for="tagline">Tagline:</label><br />
+    <input type="text" name="tagline" value="<%= @blogpost['tagline'] %>"><br /><br />
+
+    <!-- post body -->
+    <label for="postbody">Post Content:</label><br />
+    <input type="textarea" name="postbody" value="<%= @blogpost['postbody'] %>"><br /><br />
+
+    <!-- post author -->
+    <label for="author">Post Content:</label><br />
+    <input type="author" name="author" value="<%= @blogpost['author'] %>"><br /><br />
+
+    <button>Update</button>
+
+</form>

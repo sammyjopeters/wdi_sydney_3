@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <head>
   <title>Rogbloll</title>
-  <link type="text/css" rel="stylesheet" href="style.css" >
+  <link type="text/css" rel="stylesheet" href="/style.css" >
+  <link href='http://fonts.googleapis.com/css?family=Armata|Indie+Flower|Rock+Salt' rel='stylesheet' type='text/css'>
 
 </head>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/newpost">Create new post</a>
-</nav>
+<div id="wrapper">
+
 
 <body>
- <%= yield %>
-  </body>
+  <header>
+    <img id="headerdoge" alt="such doge" src="/doge.gif" />
+    <h1>Wow such blog</h1>
+      <nav>
+    <ul id="navul">
+  <li><a href="/">Home</a></li>
+  <li><a href="/posts/new">Create new post</a></li>
+</ul>
 
-<footer>
+  </nav> 
+  </header>
+
+
+
+
+    <%= yield %>
+
+
+
+    <footer>
   <p>Built by Sam Peters, Jan 2014</p>
 </footer>
+
+  </div>
+  </body>
+
+
 </html>

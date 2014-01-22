@@ -1,3 +1,4 @@
+<div class="content">
 
 <!-- Title of the post -->
 <h2><%= @post['title'] %></h2>
@@ -12,4 +13,34 @@
 <h4>Created by <%= @post['author'] %> </h4>
 
 <!-- Time created -->
-<h5>Created on <%= @post['created'] %> </h5>
+<h5>Created on <%= @post['created_at'] %> </h5>
+
+<!-- Time last updated  -->
+<h5>Created on <%= @post['updated_at'] %> </h5>
+
+
+<h2> Comments for this post</h2>
+<div class="comments">
+<% @comment.each do |comment| %>
+<!-- Title of the post -->
+
+<h3><%= comment['author'] %></h2>
+  <p><%= comment['commentbody'] %></p>
+  <p><%= comment['created_at'] %></p>
+
+<% end %>
+</div>
+
+<div class="commentform">
+<form method="post" action="/posts/<%= @post['id'] %>/comments">
+<input type="hidden" name="post_id" value="<%= @post['id'] %>" >
+
+<label for "author">Your name:</label><br />
+<input type="text" name="author">
+
+<label for "commentbody">Your Comment:</label><br />
+<input type="textarea" name="commentbody" placeholder="your comment here">
+
+<button>Post comment</button>
+  </form>
+</div>
