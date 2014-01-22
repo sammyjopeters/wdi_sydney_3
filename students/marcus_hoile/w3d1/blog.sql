@@ -14,3 +14,10 @@ create table courses
 	author varchar(255),
 	created_at timestamp
 );
+
+create table comments
+	(
+		id serial primary key,
+		comment varchar(255),
+		post_id integer references blog.id
+		);

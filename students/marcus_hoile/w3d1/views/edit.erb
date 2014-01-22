@@ -1,9 +1,10 @@
-<form method="post" action="/post/<%= @post['id'] %>">
-	<label for="">Title (Live):</label><br>
+<form method="put" action="/posts/<%= @post['id'] %>">
+	<input type="hidden" name="_method" value="put">
+	<label for="">Title:</label><br>
 	<input type="text" name="title" value="<%= CGI.unescape(@post['title']) %>"><br><br>
 	<label for="">Description</label><br>
 	<textarea rows="10" name="description" placeholder="Put the updated description here"><%= CGI.unescape(@post['description']) %></textarea><br><br>
-	<label for="">Body (Live):</label><br>
+	<label for="">Body:</label><br>
 	<textarea rows="10" name="body"><%= CGI.unescape(@post['body']) %></textarea><br><br>
 	<label for="">Author:</label><br>
 	<input type="text" name="author" value="<%= @post['author'] %>"><br><br>
