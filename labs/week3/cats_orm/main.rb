@@ -12,22 +12,14 @@ ActiveRecord::Base.establish_connection(
   :database => "cats"
 )
 
+class Toy < ActiveRecord::Base
+  belongs_to :cat
+
+  validates :name, :numericality => true
+end
+
 class Cat < ActiveRecord::Base
-  validates :name, :presence => true, 
-    :uniqueness => true, 
-    :length => { :in => 2..255 } #, :message => "%value is a crappy name, try again"
-
-  # validates :password, :on => :create, :presence => true
-
-  # validates :age, :numericality => { 
-  #   :only_integer => true, 
-  #   :greater_than_or_equal_to => 18, :allow_blank => true, }
-
-  # validates :gender, 
-  #   :inclusion => { :in => ['m','f'] }, 
-  #   :message => " %{value} is not a valid gender, pls enter m/f"
-
-  # validate_presence_of :name
+  has_many :toys    
 end
 
 get '/' do
@@ -49,7 +41,20 @@ end
 
 get '/cats/:id' do
   @cat = Cat.find(params[:id])
+  @toys = @cat.toys
   erb :show
+end
+
+post '/cats/:id/toys' do
+  @cat = Cat.find(params[:id])
+  @toy = @cat.toys.new(params[:toy])
+
+  if @toy.save
+    redirect to "/cats/#{@cat.id}"
+  else
+    @toys = @cat.toys.reload
+    erb :show
+  end
 end
 
 delete '/cats/:id' do
