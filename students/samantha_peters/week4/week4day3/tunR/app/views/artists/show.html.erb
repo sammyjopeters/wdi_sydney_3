@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+</p>
+
+<p>
+  <strong>Members:</strong>
+  <%= @artist.members %>
+</p>
+
+<p>
+  <strong>Formed:</strong>
+  <%= @artist.formed %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @artist.image %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @artist.website %>
+</p>
+
+<h2>Albums</h2>
+<% @albums.each do |album| %>
+<%= link_to image_tag(album.album_art), album %>
+<%= link_to album.name, album %>
+<% end %>
+
+<h2>Singles</h2>
+<% @singles.each do |song| %>
+<%= link_to image_tag(song.image), song %>
+<%= link_to song.name, song %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>

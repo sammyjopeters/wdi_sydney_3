@@ -8,21 +8,30 @@
 
 <% @post.each do |post| %>
 <!-- Title of the post -->
-<div class="content">
+<div class="postlist">
+
   <h3><%= post['title'] %></h2>
+    <ul>
+    <li>Created: <%= post['created_at'] %></li>
+    </ul>
 
   <!-- Tagline of the post -->
-  <em><%= post['tagline'] %></em>
+  <em><%= post['tagline'] %></em><br />
+  <a href="/posts/<%= post.id %>">Read more...</a>
 
-  <p>Created: <%= post['created_at'] %> | Updated: <%= post['updated_at'] %></p>
 
-  <a href="/posts/<%= post['id'] %>">Read more...</a><br /><br />
-    <form method="post" action="/posts/<%= post['id'] %>">
-      <input type="hidden" name="_method" value="delete">
-      <button class="button">Delete</button>
-    </form>
+  <div class="controls">
 
-  <div class="button"><a href="/posts/<%= post['id'] %>/edit">Edit</a></div>
+    <a href="/posts/<%= post.id %>/edit">Edit</a></li>
+
+    <form method="post" action="/posts/<%= post.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <button class="button">Delete</button>
+      </form>
+
+
+
+   </div>
 </div>
 <% end %>
 

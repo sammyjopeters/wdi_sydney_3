@@ -1,23 +1,26 @@
 
-<% @records.each do |post| %>
-<div class="content">
+<% @bestposts.each do |post| %>
+<div class="postlist">
 <!-- Title of the post -->
-<h2><%= post['title'] %></h2>
+<h2><%= post.title %></h2>
 
 <!-- Tagline of the post -->
-<h3><%= post['tagline'] %></h3>
+<h3><%= post.tagline %></h3>
 
 <!-- Tagline of the post -->
-<p><%= post['postbody'] %></p>
+<p><%= post.postbody %></p>
 
 <!-- Author of the post -->
-<h4>Created by <%= post['author'] %> </h4>
+<h4>Created by <%= post.author %> </h4>
 
-<!-- Time created -->
-<h5>Created on <%= post['created_at'] %> </h5>
+	<div class="timestamps">
+		<!-- Time created -->
+		<p>Created on <%= post.created_at %> </p>
 
-<!-- Time last updated  -->
-<h5>Created on <%= post['updated_at'] %> </h5>
+		<!-- Time last updated  -->
+		<p>Created on <%= post.updated_at %></p>
+	</div>
+
 </div>
 <% end %>
 

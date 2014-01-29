@@ -1,107 +1,155 @@
-body {
-  background-image:url(http://fc07.deviantart.net/fs70/i/2011/024/5/3/glitter_bokeh_by_falloutgirl9001-d37yabs.jpg);
-  background-repeat:no-repeat;
-  background-size:cover;
+body{
+  background-color: #bd9a79;
 }
-a {
+
+nav{
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+}
+
+a{
   text-decoration: none;
 }
-header {
-  height:250px;
-  background:-moz-linear-gradient(top,rgba(255,0,0,1) 0%,rgba(0,0,0,0) 100%);
-  /* FF3.6+*/
-  background:-webkit-linear-gradient(top,rgba(255,0,0,1) 0%,rgba(0,0,0,0) 100%);
-  /* Chrome10+,Safari5.1+*/
+
+a:hover{
+  text-shadow: 0 0 10px #c61a1a;
 }
+
+h1{
+  font-family: 'Rock Salt', cursive;
+}
+
+
+nav{
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+}
+
+nav ul{
+  list-style: none;
+  font-family: 'Lekton', sans-serif;
+  font-size: 30px;
+}
+
+nav li{
+  display: inline-block;
+  margin: 5px 15px;
+}
+
+#sortmenu ul{
+  list-style: none;
+  font-family: 'Lekton', sans-serif;
+  font-size: 30px;
+}
+
+#sortmenu li{
+  display: inline-block;
+  margin: 5px 15px;
+}
+
+aside{
+  width: 20%;
+  margin: 10px;
+  padding: 20px;
+  float: right;
+  background-color: #FFF;
+}
+
 footer {
+  margin: 10px 0px;
+  text-align: center;
+  border: 1px solid gray;
+  padding: 10px;
 }
-button {
-  border: none;
+
+#container{
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+#content{
+  width: 70%;
+}
+
+.post{
+  background-color: #FFF;
+  padding: 20px;
 
 }
-a:hover {
-  text-shadow:0 0 0.2em #F00,0 0 0.2em #F00,0 0 0.2em #F00,0 0 0.2em #F00,0 0 0.2em #F00;
+
+.controls{
+  margin-top: 15px;
+
 }
-#sortmenu a:hover {
-  text-shadow:0 0 0.2em #0F0,0 0 0.2em #0F0,0 0 0.2em #0F0,0 0 0.2em #0F0,0 0 0.2em #0F0;
+
+.controls a{
+  background-color: #564f52;
+  margin-right: 15px;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+  font-family: arial, serif;
+  font-size: 12px;
 }
-nav ul {
-  list-style:none;
-  text-decoration:none;
+
+.controls form{
+  display: inline;
+  margin: 0px;
+  padding: 0px;
 }
-#navul {
-  font-size:40px;
-  margin-bottom:0px;
-  padding-bottom:0px;
+
+.controls button{
+  background: none; 
+  border: none; 
+  background-color: #564f52;
+  margin-left: 15px;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-family: arial, serif;
+  font-size: 12px;
+
+
 }
-#sortmenu {
-  font-size:20px;
-  color:#cc0000;
-  margin-top:0px;
-  padding-top:0px;
+
+.postlist{
+  background-color: #FFF;
+  padding: 15px;
+  margin: 15px 0px;
+  border-bottom: 1px dotted black;
 }
-nav li {
-  display:inline-block;
-  padding:10px;
-  font-family:'Indie Flower',cursive;
+
+.postlist ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+
 }
-nav li a {
-  color:#FFF;
+
+.postlist li{
+  display: inline-block;
 }
-header h1 {
-  font-family:'Rock Salt',cursive;
-  text-align:center;
-  margin-bottom:0px;
-  padding-bottom:0px;
+
+.timestamps{
+  padding:0px;
+  border-top: 1px dotted black;
+  margin: 0 auto;
+
 }
-h3 {
-  font-family:'Armata',sans-serif;
+
+.timestamps ul{
+  list-style: none;
+  margin: 0px;
+
 }
-#headerdoge {
-  float:right;
-  height:250px;
-  z-index:-10;
-}
-#wrapper {
-  width:960px;
-  background-color:rgba(0,0,0,0.3);
-  color:#fff;
-  border:2px solid #000;
-  margin:0 auto;
-  padding:20px;
-}
-.content {
-  width:95%;
-  margin:10px;
-  background-color:#5E0000;
-  padding:30px;
-}
-.button {
-  border-top:1px solid #000000;
-  background:#910000;
-  background:-webkit-gradient(linear,left top,left bottom,from(#ff0000),to(#910000));
-  background:-webkit-linear-gradient(top,#ff0000,#910000);
-  background:-moz-linear-gradient(top,#ff0000,#910000);
-  background:-ms-linear-gradient(top,#ff0000,#910000);
-  background:-o-linear-gradient(top,#ff0000,#910000);
-  padding:5.5px 11px;
-  -webkit-border-radius:7px;
-  -moz-border-radius:7px;
-  border-radius:7px;
-  -webkit-box-shadow:rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow:rgba(0,0,0,1) 0 1px 0;
-  box-shadow:rgba(0,0,0,1) 0 1px 0;
-  text-shadow:rgba(0,0,0,.4) 0 1px 0;
-  color:white;
-  font-size:13px;
-  font-family:Georgia,serif;
-  text-decoration:none;
-  vertical-align:middle;
-  width:70px;
-  height:20px;
-}
-.button:hover {
-  border-top-color:#ffffff;
-  background:#ffffff;
-  color: #000000;
+
+.timestamps li{
+  display: inline-block;
+  margin: 5px 30px;
 }
