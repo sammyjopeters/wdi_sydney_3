@@ -1,42 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Artist -%>
+<div class="page-header">
+  <h1><%= @artist.name %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+  <div class="artist">
+  <div class="artistimage">
+  <%= image_tag @artist.image, :width => 400 %>
+  </div>
+  
+  <p><strong>Members: </strong> <%= @artist.members %></p>
+  <p><strong>Formed:</strong> <%= @artist.formed %></p>
+  <h4><%= @artist.website %></h4>
 
-<p>
-  <strong>Members:</strong>
-  <%= @artist.members %>
-</p>
+  <p>Links</p>
+  <%= link_to "See #{@artist.name}'s Albums", artist_albums_path(@artist) %>
+  <%= link_to "See #{@artist.name}'s Songs", artist_songs_path(@artist) %>
+  </div>
 
-<p>
-  <strong>Formed:</strong>
-  <%= @artist.formed %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @artist.image %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @artist.website %>
-</p>
-
-<h2>Albums</h2>
-<% @albums.each do |album| %>
-<%= link_to image_tag(album.album_art), album %>
-<%= link_to album.name, album %>
-<% end %>
-
-<h2>Singles</h2>
-<% @singles.each do |song| %>
-<%= link_to image_tag(song.image), song %>
-<%= link_to song.name, song %>
-<% end %>
-
-
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              artists_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_artist_path(@artist), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              artist_path(@artist),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

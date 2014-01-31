@@ -2,18 +2,33 @@
 <html>
 <head>
   <title>TunR</title>
+
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
+
+<div class="container">
 <nav>
+
  <%= render partial: 'application/header'%> 
+
 </nav>
 
-<%= yield %>
+
+<div class="row">
+ <div class="span9"><%= yield %></div>
+ <div class="span3"></div>
+</div>	
 
 
-<footer>  <%= render partial: 'application/footer'%> </footer>
+
+
+<footer class="footer">  <%= render partial: 'application/footer'%> </footer>
+
+  </div>
 </body>
 </html>

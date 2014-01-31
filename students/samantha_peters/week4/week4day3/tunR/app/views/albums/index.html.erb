@@ -1,35 +1,27 @@
-<h1>Listing albums</h1>
+<%- model_class = Album -%>
+<div class="page-header">
+  <h1>All <%=@artist.name%>'s albums</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Genre</th>
-      <th>Album art</th>
-      <th>Artist</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
+    
     <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.name %></td>
-        <td><%= album.year %></td>
-        <td><%= album.genre %></td>
-        <td><%= album.album_art %></td>
-        <td><%= album.artist_id %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="album">
+        <h2><%= link_to album.name, album %></h2><br />
+        <h4><%= album.artist.name %></h4>
+        <%= album.year %><br />
+        <%= album.genre %><br />
+        <%= image_tag album.album_art %><br /><br />
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_album_path(album), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      album_path(album),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Album', new_album_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_artist_album_path(@artist),
+            :class => 'btn btn-primary' %>
