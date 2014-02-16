@@ -6,15 +6,25 @@
   <link rel="stylesheet" href="style.css">
   <script type='text/javascript' src='js/underscore.min.js'></script>
   <script type='text/javascript' src='js/game.js'></script>
+  <link href='http://fonts.googleapis.com/css?family=Cutive+Mono|Diplomata+SC|Geo' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body id="the-body">
+<div class="container">
+<header>
+  <h1>Hangman</h1>
+  <h2>By Sam-man</h2>
+</header>
+
   <div id="gamePlayArea">
     <div id="hangmanArea">
-      Guesses Left: <span id="guessesLeft"></span>
+    <span id="guessesLeft"></span><br />
+      Guesses Left<br />
+      <input id="giveUpButton" class="button" type="submit" value="Give up"/>
+      <input id="resetButton" class="button" type="submit" value="Reset Game"/>
     </div>
     <div id="letterArea">
       <div id="lettersUsed">
-        Letters Guessed Already:
+        Letters You've Guessed:
         <div id="guessedLetters"></div>
       </div>
       <div id="guessBox">
@@ -25,9 +35,6 @@
     </div>
   </div>
   <div id="wordString"></div>
-  <div id="gameControlArea">
-    <input id="giveUpButton" class="button" type="submit" value="Give up"/>
-    <input id="resetButton" class="button" type="submit" value="Reset Game"/>
   </div>
 </body>
 </html>
