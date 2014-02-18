@@ -24,6 +24,14 @@ h1 {
   margin-bottom: 10px;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
+.unhidden {
+  visibility: visible;
+}
+
 .row {
   clear: both;
 }
