@@ -34,29 +34,31 @@ var startTurn = function () {
 
 var checkIfMatch = function () {
     if (_.size(twoCardsToCheck) === 2) {
-        if ($(twoCardsToCheck[0]).find('span').html() === $(twoCardsToCheck[1]).find('span').html() ) {
-            alert("they match!");
+        if ($(twoCardsToCheck[0]).find('span').html() === $(twoCardsToCheck[1]).find('span').html()) {
 
             //add 'found' class to the cards
-            $(twoCardsToCheck[0]).find('.column').addClass('found');
-            $(twoCardsToCheck[1]).find('.column').addClass('found');
+            $(twoCardsToCheck[0]).find('.column').removeClass('column').addClass('column found');
+            $(twoCardsToCheck[1]).find('.column').removeClass('column').addClass('column found');
+            console.log("they match!");
             //reset the cards-to-check array
             twoCardsToCheck = [];
         } else {
 
             //reset the cards-to-check array
-                        //set both cards to 'hidden' again
-            $(twoCardsToCheck[0]).find('span.unhidden').removeClass('unhidden').addClass('hidden');
-            $(twoCardsToCheck[1]).find('span.unhidden').removeClass('unhidden').addClass('hidden');
+            //set both cards to 'hidden' again
+                    $(twoCardsToCheck[0]).find('span.unhidden').removeClass('unhidden').addClass('hidden').delay(500);
+                    $(twoCardsToCheck[1]).find('span.unhidden').removeClass('unhidden').addClass('hidden').delay(500);
+
+
             twoCardsToCheck = [];
-            alert("no match, start again");
+            console.log("no match, start again");
 
 
         }
 
     } else {
         //there's only one card, no need to check anything
-        alert('card added, click another');
+        console.log('card added, click another');
         return;
     }
 
