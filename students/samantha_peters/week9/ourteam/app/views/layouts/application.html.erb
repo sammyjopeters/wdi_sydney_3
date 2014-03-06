@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Team</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="container">
+	<header>
+	<h1>Our Team</h1>
+	<h3>We're pretty Awesome. Click on a picture to find out more.</h3>
+	</header>
+
+	<div id="thumbnails"></div>
+
+	<div id="detail">
+    <div id="picture"></div>
+    <div class="name"></div>
+    <div class="bio"></div>
+    <div class="quote"></div>
+
+
+
+  </div>
+
+</div>
+
+
+<!-- JS -->
+  <%= javascript_include_tag "application" %>
+  <script>
+    $(document).ready(function() {
+      //call the quotes collection here
+      App.people = new App.People();
+      //start the routes so the links on the quotes actually go somewhere
+      App.router = new App.Router();
+      //fetch the stuff from inside the collection
+      App.people.fetch();
+      Backbone.history.start();
+    });
+  </script>
+
+
+</body>
+</html>
